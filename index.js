@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use('/', routesExample);
 
-const PORT = 5000; // this is the backend routing port
+const PORT = 8989; // this is the backend routing port
 app.listen(PORT,() => {
     console.log(`server is running on port ${PORT}.`);
 });
