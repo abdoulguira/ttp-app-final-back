@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 // const { users } = require('../database')
 // var bodyParser = require('body-parser')
 // var jsonParser = bodyParser.json()
@@ -10,6 +11,8 @@ const router = express.Router();
 //https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=' 
 
 // use axios or fetch to get data from movie api
+
+//all movies
 router.get('/getMovies/:term', async (req, res) => {
     console.log(req.params.term);
     // res.end('NA');
@@ -22,6 +25,53 @@ router.get('/getMovies/:term', async (req, res) => {
       })
       .catch(e=>console.log(e))
 });
+
+//api key used for categorizing: https://api.themoviedb.org/3/movie/550?api_key=9b790665c935b1e0e1913340b809510c
+
+//genre categorized movies
+router.get('/movie/:movie_id/keywords', async (req, res) => {
+    console.log(req.params.term);
+    // res.end('NA');
+    axios({
+        method: 'get',
+        url: `https://api.themoviedb.org/3/movie_id/550?api_key=${process.env.API_KEY}`,
+      })
+      .then(function (response) {
+        res.send(response);
+      })
+      .catch(e=>console.log(e))
+});
+
+//popular-movies, working well, use word "popular" for keyword search
+router.get('/movie/popular', async (req, res) => {
+    console.log(req.params.term);
+    // res.end('NA');
+    axios({
+        method: 'get',
+        url: `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`,
+        //https://api.themoviedb.org/3/movie/popular?api_key=<<api_key>>&language=en-US&page=1
+      })
+      .then(function (response) {
+          res.send(response.data)
+      })
+      .catch(e=>console.log(e))
+});
+
+//similar movies, working well, use as a recommeded function on the front end.
+router.get('/movie/:movie_id/similar', async (req, res) => {
+    console.log(req.params.term);
+    // res.end('NA');
+    axios({
+        method: 'get',
+        url: `https://api.themoviedb.org/3/movie/${req.params.movie_id}/similar?api_key=${process.env.API_KEY}`,
+      })
+      .then(function (response) {
+          res.send(response.data)
+      })
+      .catch(e=>console.log(e))
+});
+
+
 
 module.exports = router;
 

@@ -1,3 +1,5 @@
 # this file is just for us to ignore some file if we would like too. we might want in the 
 # to ignore some file. If you have a file and you don't want it to play a role in here, you can put it in here.
 # you might not wanna share some files as well
+
+/.env
