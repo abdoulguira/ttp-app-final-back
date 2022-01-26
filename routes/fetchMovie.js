@@ -1,12 +1,29 @@
 const express = require('express');
 // const { users } = require('../database')
+// var bodyParser = require('body-parser')
+// var jsonParser = bodyParser.json()
+const axios = require('axios');
+
 
 const router = express.Router();
-
+//api from Peng's youtube resource, must be changed if needed since it is someone's private key:
+//https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=' 
 
 // use axios or fetch to get data from movie api
+router.get('/getMovies/:term', async (req, res) => {
+    console.log(req.params.term);
+    // res.end('NA');
+    axios({
+        method: 'get',
+        url: `https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=${req.params.term}`,
+      })
+      .then(function (response) {
+          res.send(response.data)
+      })
+      .catch(e=>console.log(e))
+});
 
-
+module.exports = router;
 
 
 

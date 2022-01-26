@@ -1,36 +1,19 @@
 const express = require('express');
-const { users } = require('../database')
-
 const router = express.Router();
 
 
 // This will be a format to get or request data from the data base
-router.get('/allUsers',async (req,res) => {
+router.get('/getData',(req,res) => {
 
-    // const str = [{
-    //     "name": "Pengdwende",
-    //     "msg": "This is my first example",
-    //     "username": "abdoulguira"
+    const str = [{
+        "name": "Pengdwende",
+        "msg": "This is my first example",
+        "username": "abdoulguira"
 
-    // }];
-
-    try {
-        const allUsers = await users.findAll()
-		res.status( allUsers == null ? 204 : 200).json(allUsers)  
-    }
-    // need to set up something for empty database " no campus found "
-    catch (e) {
-        res.json(e);
-    }
+    }];
+    res.end(JSON.stringify(str));
 
 });
-
-
-// post route 
-// delete user
-// put user 
-
-
 
 // This will be a format to post or add data to the data base
 router.post('/addData',(req,res) => {
