@@ -17,7 +17,8 @@ app.use('/', routesFetchMovie);
 app.use('/users', require('./routes/users.js'));
 
 
-const PORT = 8001; // this is the backend routing port
+var PORT = process.env.PORT || 8001;
+ // this is the backend routing port
 app.listen(PORT,() => {
     console.log(`server is running on port ${PORT}.`);
 });
