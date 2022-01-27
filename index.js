@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use('/', routesExample);
 app.use('/', routesFetchMovie);
 
-app.use('/users', require('./routes/users'));
+app.use('/users', require('./routes/users.js'));
 
 
 const PORT = 8001; // this is the backend routing port

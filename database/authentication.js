@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const user = require('./users');
-//const { User } = require('./database');
 
 // checking to see if submitted password exist in database
 function passwordsMatch(submittedPassword, storedPasswordHash) {
@@ -15,9 +14,9 @@ passport.use(new LocalStrategy({
     passwordField: 'password',
   },
   (email, password, done) => {
-    User.findOne({ where: { email } })
-      .then((user) => {
-        if(!user) {
+    user.findOne({ where: { email } })
+      .then((gig) => {
+        if(!gig) {
           console.log('\n\nFailed Login: user does not exist\n\n');
           return done(null, false, { message: 'Failed Login' });
         }
@@ -39,9 +38,9 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  User.findByPk(id)
-    .then((user) => {
-      if (!user) {
+  user.findByPk(id)
+    .then((gig) => {
+      if (!gig) {
         done(null, false);
         return;
       }
