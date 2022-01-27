@@ -1,7 +1,8 @@
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const { User } = require('./database');
+const user = require('./users');
+//const { User } = require('./database');
 
 // checking to see if submitted password exist in database
 function passwordsMatch(submittedPassword, storedPasswordHash) {

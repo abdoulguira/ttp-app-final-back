@@ -1,13 +1,16 @@
-const Sequelize = require('sequelize')
+const Sequelize = require("sequelize");
+const users = require('./users')
+const db = require("./database");
 
-const db = new Sequelize(
-    {
-        dialect: 'postgres',
-        host: 'localhost',
-        port: 5432,
-        username: 'kylexue',
-        database: 'movieworld'
-    }
-)
+// campuses.hasMany(students, {
+//     foreignKey: 'campus'
+// })
 
-module.exports = db
+// students.belongsTo(campuses, 
+//     {
+//         foreignKey: 'campus',
+//         as: 'att_campus'
+//     }
+// )
+
+module.exports = { db, users }
