@@ -36,7 +36,7 @@ router.post('/', jsonParser,(req, res) => {
       .catch(err => {
         res.status(400).json(err);
       }); 
-
+    })
 // Will delete a user
 
 router.delete('/delete/:userId', 
@@ -114,6 +114,3 @@ router.get('/', async (req, res) => {
 
 
 module.exports = router;
-
-
-

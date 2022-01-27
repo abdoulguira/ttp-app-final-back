@@ -9,6 +9,7 @@ const db = require('./database/database.js');
 //  .catch(err => console.log('Error:' + err))
 
 const app = express();
+var PORT = process.env.PORT || 8001;
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use('/', routesExample);
@@ -17,7 +18,7 @@ app.use('/', routesFetchMovie);
 app.use('/users', require('./routes/users.js'));
 
 
-var PORT = process.env.PORT || 8001;
+
  // this is the backend routing port
 app.listen(PORT,() => {
     console.log(`server is running on port ${PORT}.`);
