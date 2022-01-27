@@ -2,4 +2,5 @@
 # to ignore some file. If you have a file and you don't want it to play a role in here, you can put it in here.
 # you might not wanna share some files as well
 
+/node_modules
 /.env

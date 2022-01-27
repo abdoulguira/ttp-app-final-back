@@ -1,34 +1,38 @@
+
 const Sequelize = require("sequelize");
 const db = require("./database");
 
-const users = db.define("users", {
-
+const Gigs = db.define("users", {
+    
     user_id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
-        primaryKey: true,
-    },
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true,
+  },
 
-    username: {
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
+  username: {
+      type: Sequelize.STRING,
+      allowNull: false,
+  },
 
-    user_password: {
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
 
-    email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
+ 
+  user_password: {
+    type: Sequelize.STRING,
+    allowNull: false,
+},
 
-    gender: {
-        type: Sequelize.STRING,
-        allowNull: true,
-    },
+
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+
+  gender: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
 
     
 }, {
@@ -36,6 +40,7 @@ const users = db.define("users", {
     initialAutoIncrement: 1
   })
 
+  
 
 
-module.exports = users
+module.exports = Gigs
