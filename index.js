@@ -20,6 +20,6 @@ app.use('/users', require('./routes/users.js'));
 
 
  // this is the backend routing port
-app.listen(PORT,() => {
+ db.sync().then(() => app.listen(PORT,() => {
     console.log(`server is running on port ${PORT}.`);
-});
+}))
